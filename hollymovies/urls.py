@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from viewer.views import hello, salutare
+from viewer.views import hello, salutare, custom
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', hello),
     path('salutare/', salutare),
+    # path('custom/<genre>', custom), # Regular expressions
+    path('custom/', custom), # URL Encoding
 ]
+
