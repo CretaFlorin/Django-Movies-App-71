@@ -7,10 +7,10 @@ def salutare(request):
     return HttpResponse("Salutare!!!")
 
 # Regular expressions
-# def custom(request, genre):
-#     return HttpResponse(genre)
+def custom(request, genre):
+    return HttpResponse(genre)
 
 # URL Encoding
-def custom(request):
-    genre = request.GET.get('genre')
-    return HttpResponse(genre)
+# def custom(request):
+#     genre = request.GET.get('genre')
+#     return HttpResponse(genre)
