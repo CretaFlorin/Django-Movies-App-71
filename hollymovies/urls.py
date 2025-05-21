@@ -16,14 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from viewer.views import hello, salutare, custom
+from viewer.views import hello
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', hello),
-    path('salutare/', salutare),
-    path('custom/<genre>', custom), # Regular expressions
-    # path('custom/', custom), # URL Encoding
 ]
 

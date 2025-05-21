@@ -1,16 +1,9 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 def hello(request):
-    return HttpResponse("Hello!!!")
-
-def salutare(request):
-    return HttpResponse("Salutare!!!")
-
-# Regular expressions
-def custom(request, genre):
-    return HttpResponse(genre)
-
-# URL Encoding
-# def custom(request):
-#     genre = request.GET.get('genre')
-#     return HttpResponse(genre)
+    # return HttpResponse("Hello!!!")
+    return render(
+        request,
+        template_name="hello.html",
+    )
