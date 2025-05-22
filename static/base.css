@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    height: 200vh;
+}
+
+.navbar {
+    width: 100vw;
+    height: 60px;
+    background-color: #b1b1b1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+}
+
+.navbar__title {
+    font-size: 20px;
+}

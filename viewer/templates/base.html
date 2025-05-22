@@ -4,9 +4,15 @@
 <html>
     <head>
         <title>Movies App</title>
-        <link rel="stylesheet" href="{% static '../static/hello.css' %}">
+        <link rel="stylesheet" href="{% static '../static/base.css' %}">
     </head>
     <body>
+        <header class="navbar">
+            <span class="navbar__title">
+                This is the HollyMovies App!
+            </span>
+        </header> 
+
         <div style="background: lightblue">
             {% block content %}
             {% endblock %}
