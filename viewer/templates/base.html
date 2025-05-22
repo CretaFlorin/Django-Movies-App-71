@@ -2,20 +2,16 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Movies App</title>
-        <link rel="stylesheet" href="{% static '../static/base.css' %}">
-    </head>
-    <body>
-        <header class="navbar">
-            <span class="navbar__title">
-                This is the HollyMovies App!
-            </span>
-        </header> 
-
-        <div style="background: lightblue">
-            {% block content %}
-            {% endblock %}
-        <div>
-    </body>
+  <head>
+    <title>Movies App</title>
+    <link rel="stylesheet" href="{% static '../static/base.css' %}" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="navbar">
+        <span class="navbar__title"> This is the HollyMovies App! </span>
+      </header>
+      <div class="content">{% block content %} {% endblock %}</div>
+    </div>
+  </body>
 </html>
