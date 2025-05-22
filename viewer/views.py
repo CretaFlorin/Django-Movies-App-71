@@ -1,9 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-def hello(request):
-    # return HttpResponse("Hello!!!")
+def main_page(request):
     return render(
         request,
-        template_name="hello.html",
+        template_name="main_page.html",
     )
