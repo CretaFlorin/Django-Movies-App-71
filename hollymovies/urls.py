@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from viewer.views import main_page
+from viewer.views import main_page, MainPageView, MainPageTemplateView, MainPageListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', main_page),
+    # path('', main_page),
+    # path('', MainPageView.as_view()),
+    # path('', MainPageTemplateView.as_view(), name='main_page'),
+    path('', MainPageListView.as_view(), name='main_page'),
 ]
