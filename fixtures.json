@@ -1,1 +1,169 @@
-[{"model": "viewer.genre", "pk": 1, "fields": {"name": "action"}}, {"model": "viewer.genre", "pk": 2, "fields": {"name": "Horror"}}, {"model": "viewer.genre", "pk": 3, "fields": {"name": "Comedy"}}, {"model": "viewer.genre", "pk": 4, "fields": {"name": "Thriller"}}, {"model": "viewer.genre", "pk": 5, "fields": {"name": "Documentar"}}, {"model": "viewer.movie", "pk": 1, "fields": {"title": "Anul nou care nu a fost", "genre": 5, "rating": 10, "released": "2024-07-09", "description": "Primul film din baza de date", "created": "2025-05-20T17:34:58.255Z"}}]
+[
+    {"model": "viewer.genre", "pk": 1, "fields": {"name": "Action"}},
+    {"model": "viewer.genre", "pk": 2, "fields": {"name": "Horror"}},
+    {"model": "viewer.genre", "pk": 3, "fields": {"name": "Comedy"}},
+    {"model": "viewer.genre", "pk": 4, "fields": {"name": "Thriller"}},
+    {"model": "viewer.genre", "pk": 5, "fields": {"name": "Documentary"}},
+  
+    {"model": "viewer.movie", "pk": 1, "fields": {
+      "title": "Mad Max: Fury Road",
+      "genre": 1,
+      "rating": 8.6,
+      "released": "2015-05-15",
+      "description": "In a post-apocalyptic wasteland, Max helps a rebel flee a tyrant.",
+      "created": "2025-05-20T17:34:58.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 2, "fields": {
+      "title": "John Wick",
+      "genre": 1,
+      "rating": 7.4,
+      "released": "2014-10-24",
+      "description": "An ex-hitman seeks vengeance for his murdered dog.",
+      "created": "2025-05-20T17:35:00.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 3, "fields": {
+      "title": "Inception",
+      "genre": 1,
+      "rating": 8.8,
+      "released": "2010-07-16",
+      "description": "A thief steals corporate secrets through dream-sharing technology.",
+      "created": "2025-05-20T17:35:02.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 4, "fields": {
+      "title": "Avengers: Endgame",
+      "genre": 1,
+      "rating": 8.4,
+      "released": "2019-04-26",
+      "description": "The Avengers unite to reverse Thanos' destruction.",
+      "created": "2025-05-20T17:35:04.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 5, "fields": {
+      "title": "Get Out",
+      "genre": 2,
+      "rating": 7.7,
+      "released": "2017-02-24",
+      "description": "A man visits his girlfriend’s family, uncovering dark secrets.",
+      "created": "2025-05-20T17:35:06.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 6, "fields": {
+      "title": "The Conjuring",
+      "genre": 2,
+      "rating": 7.5,
+      "released": "2013-07-19",
+      "description": "Paranormal investigators help a family terrorized by a dark presence.",
+      "created": "2025-05-20T17:35:08.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 7, "fields": {
+      "title": "A Quiet Place",
+      "genre": 2,
+      "rating": 7.5,
+      "released": "2018-04-06",
+      "description": "A family must live in silence to hide from monsters.",
+      "created": "2025-05-20T17:35:10.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 8, "fields": {
+      "title": "Hereditary",
+      "genre": 2,
+      "rating": 7.3,
+      "released": "2018-06-08",
+      "description": "A family's dark secrets come to light after a tragedy.",
+      "created": "2025-05-20T17:35:12.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 9, "fields": {
+      "title": "Superbad",
+      "genre": 3,
+      "rating": 7.6,
+      "released": "2007-08-17",
+      "description": "Two high school friends try to enjoy one last party.",
+      "created": "2025-05-20T17:35:14.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 10, "fields": {
+      "title": "The Hangover",
+      "genre": 3,
+      "rating": 7.7,
+      "released": "2009-06-05",
+      "description": "Three groomsmen lose their friend and try to retrace their steps.",
+      "created": "2025-05-20T17:35:16.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 11, "fields": {
+      "title": "Step Brothers",
+      "genre": 3,
+      "rating": 6.9,
+      "released": "2008-07-25",
+      "description": "Two adult men become stepbrothers and act like children.",
+      "created": "2025-05-20T17:35:18.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 12, "fields": {
+      "title": "Anchorman",
+      "genre": 3,
+      "rating": 7.2,
+      "released": "2004-07-09",
+      "description": "Ron Burgundy is San Diego's top-rated newsman in the 1970s.",
+      "created": "2025-05-20T17:35:20.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 13, "fields": {
+      "title": "Gone Girl",
+      "genre": 4,
+      "rating": 8.1,
+      "released": "2014-10-03",
+      "description": "A husband becomes the prime suspect in his wife's disappearance.",
+      "created": "2025-05-20T17:35:22.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 14, "fields": {
+      "title": "Prisoners",
+      "genre": 4,
+      "rating": 8.1,
+      "released": "2013-09-20",
+      "description": "A father takes matters into his own hands after his daughter goes missing.",
+      "created": "2025-05-20T17:35:24.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 15, "fields": {
+      "title": "Shutter Island",
+      "genre": 4,
+      "rating": 8.2,
+      "released": "2010-02-19",
+      "description": "A U.S. Marshal investigates a psychiatric facility's missing patient.",
+      "created": "2025-05-20T17:35:26.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 16, "fields": {
+      "title": "Zodiac",
+      "genre": 4,
+      "rating": 7.7,
+      "released": "2007-03-02",
+      "description": "San Francisco reporters and police chase the Zodiac killer.",
+      "created": "2025-05-20T17:35:28.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 17, "fields": {
+      "title": "The Social Dilemma",
+      "genre": 5,
+      "rating": 7.6,
+      "released": "2020-01-26",
+      "description": "Explores the dangerous human impact of social networking.",
+      "created": "2025-05-20T17:35:30.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 18, "fields": {
+      "title": "13th",
+      "genre": 5,
+      "rating": 8.2,
+      "released": "2016-10-07",
+      "description": "A look at the intersection of race, justice, and mass incarceration.",
+      "created": "2025-05-20T17:35:32.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 19, "fields": {
+      "title": "My Octopus Teacher",
+      "genre": 5,
+      "rating": 8.1,
+      "released": "2020-09-07",
+      "description": "A filmmaker forges a friendship with an octopus in a kelp forest.",
+      "created": "2025-05-20T17:35:34.255Z"
+    }},
+    {"model": "viewer.movie", "pk": 20, "fields": {
+      "title": "Won’t You Be My Neighbor?",
+      "genre": 5,
+      "rating": 8.3,
+      "released": "2018-06-08",
+      "description": "A look at the life of Fred Rogers, the host of a beloved children's show.",
+      "created": "2025-05-20T17:35:36.255Z"
+    }}
+  ]
+  
