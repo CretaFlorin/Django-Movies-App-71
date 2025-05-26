@@ -1,5 +1,7 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<p>This is the main page!</p>
+{%for movie in movies%}
+<p>{{movie}}</p>
+{%endfor%}
 {% endblock %}
