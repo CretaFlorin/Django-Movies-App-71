@@ -2,7 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from viewer.models import Movie, Genre
 from django.views import View
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, FormView
+from viewer.forms.movie_create import MovieCreateForm
 
 # View-urile sunt de 2 tipuri: Functional si Class-Based
 
@@ -41,3 +42,9 @@ class MainPageTemplateView(TemplateView):
 class MainPageListView(ListView):
     template_name = "main_page.html"
     model = Movie
+
+# 3.FormView      - O clasa de View pe care o folosim pentru
+#                  a lucra mai usor cu Form-uri
+class MovieCreateFormView(FormView):
+    template_name = "movie_create.html"
+    form_class = MovieCreateForm
