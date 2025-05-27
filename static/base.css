@@ -27,9 +27,11 @@ body {
 
 /* ------ CONTENT ------ */
 .content {
-    width: 60vw;
-    height: 130vh;
-    padding-top: 60px;
+    width: auto;
+    height: auto;
+    min-width: 60vw;
+    min-height: 100vh;
+    padding: 60px 20px 20px 20px;
     /**/
     display: flex;
     flex-direction: column;

@@ -4,19 +4,16 @@ from viewer.models import Movie, Genre
 from django.views import View
 from django.views.generic import TemplateView, ListView, FormView
 from viewer.forms.movie_create import MovieCreateForm
+from django.urls import reverse_lazy
 
 # View-urile sunt de 2 tipuri: Functional si Class-Based
+
 
 # --------- Functional View ---------
 def main_page(request):
     movies = Movie.objects.all()
-    return render(
-        request,
-        template_name="main_page.html",
-        context={
-            "movies": movies
-        }
-    )
+    return render(request, template_name="main_page.html", context={"movies": movies})
+
 
 # --------- Class-Based Views ---------
 # View - mostenim cea mai generica clasa de View
@@ -24,18 +21,16 @@ class MainPageView(View):
     def get(self, request):
         movies = Movie.objects.all()
         return render(
-            request,
-            template_name="main_page.html",
-            context={
-                "movies": movies
-            }
+            request, template_name="main_page.html", context={"movies": movies}
         )
-        
+
+
 # 1.TemplateView - O clasa de View pe care o folosim pentru
 #                  a lucra mai usor cu Template-uri
 class MainPageTemplateView(TemplateView):
     template_name = "main_page.html"
     extra_context = {"movies": Movie.objects.all()}
+
 
 # 2.ListView      - O clasa de View pe care o folosim pentru
 #                  a lucra mai usor cu Liste
@@ -43,8 +38,25 @@ class MainPageListView(ListView):
     template_name = "main_page.html"
     model = Movie
 
+
 # 3.FormView      - O clasa de View pe care o folosim pentru
 #                  a lucra mai usor cu Form-uri
 class MovieCreateFormView(FormView):
     template_name = "movie_create.html"
     form_class = MovieCreateForm
+    success_url = reverse_lazy('movies')
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+       
+        # Salvam filmul in DB    
+        data = form.cleaned_data
+        new_movie = Movie(
+            title=data["title"],
+            genre=data["genre"],
+            rating=data["rating"],
+            released=data["released"],
+            description=data["description"],
+        )
+        new_movie.save()
+        return result
