@@ -60,3 +60,27 @@ class MovieCreateFormView(FormView):
         )
         new_movie.save()
         return result
+    
+    
+class MovieUpdateFormView(FormView):
+    template_name = "movie_create.html"
+    form_class = MovieCreateForm
+    success_url = reverse_lazy('movies')
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+       
+        # Updatam filmul in DB    
+        pk = self.kwargs['pk']
+        
+        data = form.cleaned_data
+        movie = Movie.objects.get(pk=pk) 
+
+        movie.title=data["title"]
+        movie.genre=data["genre"]
+        movie.rating=data["rating"]
+        movie.released=data["released"]
+        movie.description=data["description"]
+        movie.save()
+       
+        return result
