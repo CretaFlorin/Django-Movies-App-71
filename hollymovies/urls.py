@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from viewer.views import main_page, MainPageView, MainPageTemplateView, MainPageListView, MovieCreateFormView,MovieUpdateFormView
+from viewer.views import main_page, MainPageView, MainPageTemplateView, MainPageListView, MovieCreateFormView,MovieUpdateFormView, MovieDeleteFormView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +27,5 @@ urlpatterns = [
     path('movies/', MainPageListView.as_view(), name='movies'),
     path('movies/create/', MovieCreateFormView.as_view(), name='movie_create'),
     path('movies/update/<pk>', MovieUpdateFormView.as_view(), name='movie_update'),
+    path('movies/delete/<pk>', MovieDeleteFormView.as_view(), name='movie_delete'),
 ]
