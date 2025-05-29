@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
@@ -17,7 +17,10 @@
       <span>{{movie.title}}</span>
       <span>{{movie.genre.name}}</span>
       <a href="{%url 'movie_update' movie.id %}">
-        <img class="edit_icon" src="{% static '../static/pencil-outline.png' %}" width="16" height="16" ></img>
+        <img class="edit_icon" src="{% static '../static/pencil-outline.png' %}" width="16" height="16"></img>
+      </a>
+      <a href="{%url 'movie_delete' movie.id %}">
+        <img class="edit_icon" src="{% static '../static/trash-can-outline.png' %}" width="16" height="16"></img>
       </a>
     </div>
     <div class="movie__description">
