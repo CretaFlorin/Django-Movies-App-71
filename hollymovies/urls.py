@@ -23,7 +23,6 @@ urlpatterns = [
     # path('', main_page),
     # path('', MainPageView.as_view()),
     # path('', MainPageTemplateView.as_view(), name='main_page'),
-    path('', MainPageListView.as_view(), name='main_page'),
     path('movies/', MainPageListView.as_view(), name='movies'),
     path('movies/create/', MovieCreateFormView.as_view(), name='movie_create'),
     path('movies/update/<pk>', MovieUpdateFormView.as_view(), name='movie_update'),

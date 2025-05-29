@@ -2,10 +2,14 @@
 {% load static %}
 
 {% block content %}
-<div>
+<div class="create-search-container">
   <a href="{%url 'movie_create'%}">
     <button class="add-movie">Add movie</button>
   </a>
+  <div class="movie_search">
+    <label>Search</label>
+    <input class="search-input" placeholder="Enter a movie..."></input>
+  </div>
 </div>
 
 <div class="movie-container">

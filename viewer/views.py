@@ -37,6 +37,25 @@ class MainPageTemplateView(TemplateView):
 class MainPageListView(ListView):
     template_name = "main_page.html"
     model = Movie
+    
+
+# http://localhost:8000/movies/?search=aaa
+#  Varianta Lista Filme Fara ListView (pentru functionalitatea de SEARCH)
+# TODO: CREATE this view
+class MainPageListView(TemplateView):
+    template_name = "main_page.html"
+    
+    def get(self, request):
+        search_value = self.request.GET.get("search")
+        
+        movies = Movie.objects.all()
+        filtered_movies = []
+        
+        for movie in movies:
+            if movie.title == search_value:
+                filtered_movies.append(movies)
+            
+        extra_context = {"object_list": filtered_movies}
 
 # 3.FormView      - O clasa de View pe care o folosim pentru
 #                  a lucra mai usor cu Form-uri
