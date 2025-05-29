@@ -44,3 +44,14 @@
 
     font-size: small;
 }
+
+.add-movie {
+    width: 80px;
+    height: 40px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    border-width: 0px;
+    box-shadow: 2px 2px 5px black;
+    background-color: blueviolet;
+    cursor: pointer;
+}

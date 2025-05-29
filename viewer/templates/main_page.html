@@ -1,5 +1,17 @@
 {% extends 'base.html' %} {% block content %}
 
+<div>
+  <a href = "{%url 'movie_create'%}">
+  <button class="add-movie">
+    Add movie
+  </button>
+  
+  </a>
+
+</div>
+
+
+
 <div class="movie-container">
   {% for movie in object_list %}
 
