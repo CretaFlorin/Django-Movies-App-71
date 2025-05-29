@@ -1,20 +1,19 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% load static %}
 
+{% block content %}
 <div>
-  <a href = "{%url 'movie_create'%}">
-  <button class="add-movie">
-    Add movie
-  </button>
-  
+  <a href="{%url 'movie_create'%}">
+    <button class="add-movie">Add movie</button>
   </a>
-
 </div>
-
-
 
 <div class="movie-container">
   {% for movie in object_list %}
 
+  <div>
+    <img src="{% static '../static/pencil-outline.png' %}" width="16" height="16" ></img>
+  </div>
   <div class="movie-card">
     <div class="movie__title">
       <span>{{movie.title}}</span>
@@ -24,8 +23,8 @@
       <span>{{movie.description}} </span>
     </div>
     <div class="movie__rating">
-        <span>{{movie.rating}} </span>
-        <span>{{movie.released}} </span>
+      <span>{{movie.rating}} </span>
+      <span>{{movie.released}} </span>
     </div>
   </div>
 
