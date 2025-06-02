@@ -12,13 +12,12 @@ from django.views.generic import (
 )
 from viewer.forms.movie import MovieForm
 from django.urls import reverse_lazy
-
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # View-urile sunt de 2 tipuri: Functional si Class-Based
-
-
 # --------- Functional View ---------
+@login_required
 def main_page(request):
     movies = Movie.objects.all()
     return render(request, template_name="main_page.html", context={"movies": movies})
@@ -26,7 +25,7 @@ def main_page(request):
 
 # --------- Class-Based Views ---------
 # View - mostenim cea mai generica clasa de View
-class MainPageView(View):
+class MainPageView(LoginRequiredMixin, View):
     def get(self, request):
         movies = Movie.objects.all()
         return render(
@@ -36,7 +35,7 @@ class MainPageView(View):
 
 # 1.TemplateView - O clasa de View pe care o folosim pentru
 #                  a lucra mai usor cu Template-uri
-class MainPageTemplateView(TemplateView):
+class MainPageTemplateView(LoginRequiredMixin, TemplateView):
     template_name = "main_page.html"
     extra_context = {"movies": Movie.objects.all()}
 
@@ -50,7 +49,6 @@ class MainPageTemplateView(TemplateView):
 
 # http://localhost:8000/movies/?search=aaa
 #  Varianta Lista Filme Fara ListView (pentru functionalitatea de SEARCH)
-# TODO: CREATE this view
 class MainPageListView(View):
     def get(self, request):
         search_value = self.request.GET.get("search")
@@ -97,7 +95,7 @@ class MainPageListView(View):
 
 
 # Create cu CreateView
-class MovieCreateFormView(CreateView):
+class MovieCreateFormView(LoginRequiredMixin, CreateView):
     template_name = "movie_create.html"
     form_class = MovieForm
     success_url = reverse_lazy("movies")
@@ -132,7 +130,7 @@ class MovieCreateFormView(CreateView):
 
 
 # Update cu UpdateView
-class MovieUpdateFormView(UpdateView):
+class MovieUpdateFormView(LoginRequiredMixin, UpdateView):
     template_name = "movie_create.html"
     model = Movie
     form_class = MovieForm
@@ -140,7 +138,7 @@ class MovieUpdateFormView(UpdateView):
 
 
 # Delete cu FormView
-class MovieDeleteFormView(DeleteView):
+class MovieDeleteFormView(LoginRequiredMixin, DeleteView):
     template_name = "movie_confirm_delete.html"
     model = Movie
     success_url = reverse_lazy("movies")

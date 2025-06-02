@@ -13,18 +13,48 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path
 
-from viewer.views import main_page, MainPageView, MainPageTemplateView, MainPageListView, MovieCreateFormView,MovieUpdateFormView, MovieDeleteFormView
+from viewer.views import (
+    main_page,
+    MainPageView,
+    MainPageTemplateView,
+    MainPageListView,
+    MovieCreateFormView,
+    MovieUpdateFormView,
+    MovieDeleteFormView,
+)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # path('', main_page),
+    path("admin/", admin.site.urls),
+    path('', main_page),
     # path('', MainPageView.as_view()),
     # path('', MainPageTemplateView.as_view(), name='main_page'),
-    path('movies/', MainPageListView.as_view(), name='movies'),
-    path('movies/create/', MovieCreateFormView.as_view(), name='movie_create'),
-    path('movies/update/<pk>', MovieUpdateFormView.as_view(), name='movie_update'),
-    path('movies/delete/<pk>', MovieDeleteFormView.as_view(), name='movie_delete'),
+    path("movies/", MainPageListView.as_view(), name="movies"),
+    path("movies/create/", MovieCreateFormView.as_view(), name="movie_create"),
+    path("movies/update/<pk>", MovieUpdateFormView.as_view(), name="movie_update"),
+    path("movies/delete/<pk>", MovieDeleteFormView.as_view(), name="movie_delete"),
 ]
+
+
+"""
+
+[1,4,6,8,9,12,23,45,56,67]
+
+d = {
+ 1-> 1: True,
+ 2-> 4: True,
+ 3-> 6: True,
+ 4-> 8: True,
+    ...
+ 8-> 56: True,
+ 9-> 67: True, 700:True, 344:True, 345:True, 98:True
+}
+
+
+hash(67) -> 9
+hash(8) -> 4
+hash(700) -> 9
+"""
