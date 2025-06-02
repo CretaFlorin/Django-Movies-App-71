@@ -2,9 +2,18 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from viewer.models import Movie, Genre
 from django.views import View
-from django.views.generic import TemplateView, ListView, FormView, UpdateView, CreateView, DeleteView
+from django.views.generic import (
+    TemplateView,
+    ListView,
+    FormView,
+    UpdateView,
+    CreateView,
+    DeleteView,
+)
 from viewer.forms.movie import MovieForm
 from django.urls import reverse_lazy
+
+
 
 # View-urile sunt de 2 tipuri: Functional si Class-Based
 
@@ -34,28 +43,35 @@ class MainPageTemplateView(TemplateView):
 
 # 2.ListView      - O clasa de View pe care o folosim pentru
 #                  a lucra mai usor cu Liste
-class MainPageListView(ListView):
-    template_name = "main_page.html"
-    model = Movie
-    
+# class MainPageListView(ListView):
+#     template_name = "main_page.html"
+#     model = Movie
+
 
 # http://localhost:8000/movies/?search=aaa
 #  Varianta Lista Filme Fara ListView (pentru functionalitatea de SEARCH)
 # TODO: CREATE this view
-class MainPageListView(TemplateView):
-    template_name = "main_page.html"
-    
+class MainPageListView(View):
     def get(self, request):
         search_value = self.request.GET.get("search")
-        
+
         movies = Movie.objects.all()
         filtered_movies = []
-        
-        for movie in movies:
-            if movie.title == search_value:
-                filtered_movies.append(movies)
-            
-        extra_context = {"object_list": filtered_movies}
+
+        if search_value:
+            filtered_movies = Movie.objects.filter(title__icontains=search_value)
+        else:
+            filtered_movies = movies
+
+        return render(
+            request,
+            template_name="main_page.html",
+            context={
+                "object_list": filtered_movies,
+                "search_value": search_value or "",
+            },
+        )
+
 
 # 3.FormView      - O clasa de View pe care o folosim pentru
 #                  a lucra mai usor cu Form-uri
@@ -66,8 +82,8 @@ class MainPageListView(TemplateView):
 
 #     def form_valid(self, form):
 #         result = super().form_valid(form)
-       
-#         # Salvam filmul in DB    
+
+#         # Salvam filmul in DB
 #         data = form.cleaned_data
 #         new_movie = Movie(
 #             title=data["title"],
@@ -79,12 +95,14 @@ class MainPageListView(TemplateView):
 #         new_movie.save()
 #         return result
 
+
 # Create cu CreateView
 class MovieCreateFormView(CreateView):
     template_name = "movie_create.html"
     form_class = MovieForm
-    success_url = reverse_lazy('movies')
-    
+    success_url = reverse_lazy("movies")
+
+
 # Update cu FormView
 # class MovieUpdateFormView(FormView):
 #     template_name = "movie_create.html"
@@ -93,35 +111,36 @@ class MovieCreateFormView(CreateView):
 
 #     def form_valid(self, form):
 #         result = super().form_valid(form)
-       
-#         # Updatam filmul in DB    
+
+#         # Updatam filmul in DB
 #         pk = self.kwargs['pk']
-        
+
 #         data = form.cleaned_data
 #         try:
-#             movie = Movie.objects.get(pk=pk) 
-        
+#             movie = Movie.objects.get(pk=pk)
+
 #             movie.title=data["title"]
 #             movie.genre=data["genre"]
 #             movie.rating=data["rating"]
 #             movie.released=data["released"]
 #             movie.description=data["description"]
 #             movie.save()
-        
+
 #             return result
 #         except:
 #             return HttpResponse(f"There is no movie with id={pk}")
-        
+
+
 # Update cu UpdateView
 class MovieUpdateFormView(UpdateView):
     template_name = "movie_create.html"
     model = Movie
     form_class = MovieForm
-    success_url = reverse_lazy('movies')
+    success_url = reverse_lazy("movies")
 
 
 # Delete cu FormView
 class MovieDeleteFormView(DeleteView):
     template_name = "movie_confirm_delete.html"
     model = Movie
-    success_url = reverse_lazy('movies')
+    success_url = reverse_lazy("movies")

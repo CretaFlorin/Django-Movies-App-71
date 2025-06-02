@@ -6,10 +6,17 @@
   <a href="{%url 'movie_create'%}">
     <button class="add-movie">Add movie</button>
   </a>
-  <div class="movie_search">
-    <label>Search</label>
-    <input class="search-input" placeholder="Enter a movie..."></input>
-  </div>
+  <form>
+    <div class="movie_search">
+      <label>Search</label>
+      <input 
+        class="search-input" 
+        name="search" 
+        placeholder="Enter a movie..." 
+        value="{{search_value}}">
+      </input>
+    </div>
+  </form>
 </div>
 
 <div class="movie-container">
