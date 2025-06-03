@@ -70,6 +70,7 @@ class MainPageListView(LoginRequiredMixin, View):
             context={
                 "object_list": filtered_movies,
                 "search_value": search_value or "",
+                "genres": [genre.name for genre in Genre.objects.all()]
             },
         )
 

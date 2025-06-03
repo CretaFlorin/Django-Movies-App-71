@@ -53,13 +53,14 @@
 }
 
 .add-movie {
-    width: 80px;
-    height: 40px;
+    width: 60px;
+    height: 30px;
     border-radius: 10px;
     border-width: 0px;
     box-shadow: 2px 2px 5px black;
     background-color: blueviolet;
     cursor: pointer;
+    font-size: 10px;
 }
 
 .edit_icon:hover {
@@ -74,10 +75,19 @@
     width: 300px;
     /**/
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
     /**/
     margin-bottom: 20px;
+}
+
+.search-filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .movie_search {

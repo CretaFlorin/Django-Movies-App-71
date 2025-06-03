@@ -3,20 +3,33 @@
 
 {% block content %}
 <div class="create-search-container">
+  <div class="search-filter">
+    <form>
+      <div class="movie_search">
+        <label>Search</label>
+        <input 
+          class="search-input" 
+          name="search"
+          placeholder="Enter a movie..." 
+          value="{{search_value}}">
+        </input>
+      </div>
+    </form>
+
+    <form>
+      <div class="movie_filter">
+        <label>Filter</label>
+        <select id="filter-dropdown">
+          {% for genre in genres %}
+            <option> {{genre}} </option>
+          {% endfor%}
+        </select>
+      </div>
+    </form>
+  </div>
   <a href="{%url 'movie_create'%}">
     <button class="add-movie">Add movie</button>
   </a>
-  <form>
-    <div class="movie_search">
-      <label>Search</label>
-      <input 
-        class="search-input" 
-        name="search" 
-        placeholder="Enter a movie..." 
-        value="{{search_value}}">
-      </input>
-    </div>
-  </form>
 </div>
 
 <div class="movie-container">
@@ -56,4 +69,17 @@
   {% endfor %}
 </div>
 
+
+<script>
+
+const filter = document.getElementById('filter-dropdown')
+console.log(filter)
+
+
+onChange = (g) => {
+  console.log("S a schimbat campul")
+}
+filter.addEventListener("change", onChange )
+
+</script>
 {% endblock %}
