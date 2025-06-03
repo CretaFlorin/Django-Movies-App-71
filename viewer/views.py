@@ -11,6 +11,7 @@ from django.views.generic import (
     DeleteView,
 )
 from viewer.forms.movie import MovieForm
+from viewer.forms.user import UserForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -76,7 +77,7 @@ class MainPageListView(LoginRequiredMixin, View):
 # 3.FormView      - O clasa de View pe care o folosim pentru
 #                  a lucra mai usor cu Form-uri
 # class MovieCreateFormView(FormView):
-#     template_name = "movie_create.html"
+#     template_name = "movie_form.html"
 #     form_class = MovieForm
 #     success_url = reverse_lazy('movies')
 
@@ -98,14 +99,19 @@ class MainPageListView(LoginRequiredMixin, View):
 
 # Create cu CreateView
 class MovieCreateFormView(LoginRequiredMixin, CreateView):
-    template_name = "movie_create.html"
+    template_name = "movie_form.html"
     form_class = MovieForm
     success_url = reverse_lazy("movies")
+    
+class RegisterView(CreateView):
+    template_name = "user_form.html"
+    form_class = UserForm
+    success_url = reverse_lazy("login")
 
 
 # Update cu FormView
 # class MovieUpdateFormView(FormView):
-#     template_name = "movie_create.html"
+#     template_name = "movie_form.html"
 #     form_class = MovieForm
 #     success_url = reverse_lazy('movies')
 
@@ -133,7 +139,7 @@ class MovieCreateFormView(LoginRequiredMixin, CreateView):
 
 # Update cu UpdateView
 class MovieUpdateFormView(LoginRequiredMixin, UpdateView):
-    template_name = "movie_create.html"
+    template_name = "movie_form.html"
     model = Movie
     form_class = MovieForm
     success_url = reverse_lazy("movies")
