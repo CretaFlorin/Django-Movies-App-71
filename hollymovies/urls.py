@@ -27,13 +27,13 @@ from viewer.views import (
     MovieDeleteFormView,
     CustomLoginView
 )
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', main_page),
     path("accounts/login/", CustomLoginView.as_view(), name='login'),
-    # path('', MainPageView.as_view()),
-    # path('', MainPageTemplateView.as_view(), name='main_page'),
+    path("logout/", LogoutView.as_view(), name='logout'),
     path("movies/", MainPageListView.as_view(), name="movies"),
     path("movies/create/", MovieCreateFormView.as_view(), name="movie_create"),
     path("movies/update/<pk>", MovieUpdateFormView.as_view(), name="movie_update"),

@@ -16,6 +16,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap:20px;
     /**/
     background-color: #b1b1b1;
     position: fixed;

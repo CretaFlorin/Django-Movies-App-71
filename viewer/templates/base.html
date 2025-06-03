@@ -11,7 +11,12 @@
     <div id="app">
       <header class="navbar">
         <span class="navbar__title"> This is the HollyMovies App! </span>
-        <span>{{user}}</span>
+        {% if user.is_authenticated %}
+        <span>{{user.username}}</span>
+        <a href="{% url 'logout' %}">
+          <span>Logout</span>
+        </a>
+        {% endif %} 
       </header>
       <div class="content">{% block content %} {% endblock %}</div>
     </div>

@@ -1,4 +1,4 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
 {% block content %}
 <form method="post">
@@ -6,6 +6,16 @@
   <table>
     {{form}}
   </table>
+
+  <div>
+    <br>
+    <span> Don't have an account? </span>
+    <a href="{% url 'movies' %}">
+      <span> Register </span>
+    </a>
+  </div>
+  <br>
+
   <input type="submit" value="Submit" />
 </form>
 {% endblock %}
