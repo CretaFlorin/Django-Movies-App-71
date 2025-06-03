@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+* {
+    font-family: Helvetica;
+}
+
 #app {
     display: flex;
     flex-direction: column;
@@ -16,7 +20,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:20px;
+    gap: 20px;
     /**/
     background-color: #b1b1b1;
     position: fixed;
@@ -39,4 +43,20 @@ body {
     align-items: center;
     /**/
     background-color: rgb(195, 218, 237);
+}
+
+.user-profile {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 20px;
+    /**/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /**/
+    border-radius: 50%;
+    background-color: rgb(206, 243, 194);
+    user-select: none;
+    cursor: pointer;
 }

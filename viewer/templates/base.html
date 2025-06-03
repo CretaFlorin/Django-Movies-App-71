@@ -12,10 +12,12 @@
       <header class="navbar">
         <span class="navbar__title"> This is the HollyMovies App! </span>
         {% if user.is_authenticated %}
-        <span>{{user.username}}</span>
         <a href="{% url 'logout' %}">
           <span>Logout</span>
         </a>
+        <div class="user-profile">
+          <span>{{user.username}}</span>
+        </div>
         {% endif %} 
       </header>
       <div class="content">{% block content %} {% endblock %}</div>
