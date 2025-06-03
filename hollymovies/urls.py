@@ -25,11 +25,13 @@ from viewer.views import (
     MovieCreateFormView,
     MovieUpdateFormView,
     MovieDeleteFormView,
+    CustomLoginView
 )
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', main_page),
+    path("accounts/login/", CustomLoginView.as_view(), name='login'),
     # path('', MainPageView.as_view()),
     # path('', MainPageTemplateView.as_view(), name='main_page'),
     path("movies/", MainPageListView.as_view(), name="movies"),

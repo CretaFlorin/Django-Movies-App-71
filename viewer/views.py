@@ -14,6 +14,8 @@ from viewer.forms.movie import MovieForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
+
 
 # View-urile sunt de 2 tipuri: Functional si Class-Based
 # --------- Functional View ---------
@@ -49,7 +51,7 @@ class MainPageTemplateView(LoginRequiredMixin, TemplateView):
 
 # http://localhost:8000/movies/?search=aaa
 #  Varianta Lista Filme Fara ListView (pentru functionalitatea de SEARCH)
-class MainPageListView(View):
+class MainPageListView(LoginRequiredMixin, View):
     def get(self, request):
         search_value = self.request.GET.get("search")
 
@@ -142,3 +144,8 @@ class MovieDeleteFormView(LoginRequiredMixin, DeleteView):
     template_name = "movie_confirm_delete.html"
     model = Movie
     success_url = reverse_lazy("movies")
+
+
+# Custom View for Login
+class CustomLoginView(LoginView):
+    template_name = 'login.html'
