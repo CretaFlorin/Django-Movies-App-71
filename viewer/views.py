@@ -49,12 +49,13 @@ class MainPageTemplateView(LoginRequiredMixin, TemplateView):
 #     template_name = "main_page.html"
 #     model = Movie
 
-
+# http://localhost:8000/movies/?filter=Thriller
 # http://localhost:8000/movies/?search=aaa
 #  Varianta Lista Filme Fara ListView (pentru functionalitatea de SEARCH)
 class MainPageListView(LoginRequiredMixin, View):
     def get(self, request):
         search_value = self.request.GET.get("search")
+        filter_value = self.request.GET.get("filter")
 
         movies = Movie.objects.all()
         filtered_movies = []
@@ -63,6 +64,14 @@ class MainPageListView(LoginRequiredMixin, View):
             filtered_movies = Movie.objects.filter(title__icontains=search_value)
         else:
             filtered_movies = movies
+            
+        if filter_value and filter_value != "---":
+            # result = []
+            # for movie in filtered_movies:
+            #     if movie.genre.name == filter_value:
+            #         result.append(movie)
+            # filtered_movies = result
+            filtered_movies = [movie for movie in filtered_movies if movie.genre.name == filter_value]
 
         return render(
             request,
@@ -70,6 +79,7 @@ class MainPageListView(LoginRequiredMixin, View):
             context={
                 "object_list": filtered_movies,
                 "search_value": search_value or "",
+                "filter_value": filter_value or "",
                 "genres": [genre.name for genre in Genre.objects.all()]
             },
         )

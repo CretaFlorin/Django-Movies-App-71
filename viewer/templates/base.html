@@ -22,5 +22,16 @@
       </header>
       <div class="content">{% block content %} {% endblock %}</div>
     </div>
+
+    <script>
+      const elements = document.getElementsByTagName('body')
+      body = elements[0]
+
+      function handleCM(event) {
+        event.preventDefault()
+      }
+
+      body.addEventListener("contextmenu", handleCM) 
+    </script>
   </body>
 </html>

@@ -3,30 +3,23 @@
 
 {% block content %}
 <div class="create-search-container">
-  <div class="search-filter">
-    <form>
-      <div class="movie_search">
-        <label>Search</label>
-        <input 
-          class="search-input" 
-          name="search"
-          placeholder="Enter a movie..." 
-          value="{{search_value}}">
-        </input>
-      </div>
-    </form>
+  <form class="search-filter-form">
+    <div class="movie_search">
+      <label>Search</label>
+      <input class="search-input" name="search" placeholder="Enter a movie..." value="{{search_value}}">
+      </input>
+    </div>
 
-    <form>
-      <div class="movie_filter">
-        <label>Filter</label>
-        <select id="filter-dropdown">
-          {% for genre in genres %}
-            <option> {{genre}} </option>
-          {% endfor%}
-        </select>
-      </div>
-    </form>
-  </div>
+    <div class="movie_filter">
+      <label>Filter</label>
+      <select id="filter-dropdown" name="filter">
+        <option> --- </option>
+        {% for genre in genres %}
+        <option {% if genre == filter_value %} selected {% endif %}> {{genre}} </option>
+        {% endfor%}
+      </select>
+    </div>
+  </form>
   <a href="{%url 'movie_create'%}">
     <button class="add-movie">Add movie</button>
   </a>
@@ -72,14 +65,12 @@
 
 <script>
 
-const filter = document.getElementById('filter-dropdown')
-console.log(filter)
+  const filter = document.getElementById('filter-dropdown')
 
-
-onChange = (g) => {
-  console.log("S a schimbat campul")
-}
-filter.addEventListener("change", onChange )
+  function onChange(event) {
+    this.form.submit()
+  }
+  filter.addEventListener("change", onChange)
 
 </script>
 {% endblock %}
