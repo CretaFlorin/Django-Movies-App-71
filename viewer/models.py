@@ -12,6 +12,7 @@ class Movie(Model):
     rating = IntegerField()
     released = DateField()
     description = TextField()
+    comment = TextField(null=True)
     created = DateTimeField(auto_now_add=True)
     
     def __str__(self):
